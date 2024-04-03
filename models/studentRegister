@@ -1,0 +1,40 @@
+const mongoose = require('mongoose');
+
+const studentRegisterSchema = new mongoose.Schema({
+    name:{
+        type:String,
+
+    },
+    email:{
+        type: String,
+    },
+    phoneNo:{
+        type : String,
+    },
+    DOB:{
+        type:String,
+    },
+    gender:{
+        type:String,
+    },
+    password:{
+        type:String,
+        
+    },
+    city:{
+        type:String,
+    },
+    createdAt:{
+        type:Date,
+        default:()=>Date.now(),
+        immutable:true,
+    },
+    updatedAt:{
+        type:Date,
+        default:()=>Date.now(),
+        immutable:true,
+    }
+})
+
+const studentRegisterModel = mongoose.model('studentRegister',studentRegisterSchema);
+module.exports = studentRegisterModel;

@@ -1,0 +1,23 @@
+const mongoose = require('mongoose');
+
+const finalExamSchema = new mongoose.Schema({
+    courseID: {
+        type: mongoose.Schema.ObjectId,
+        ref:"Course",
+    },
+    questions:[
+        {
+        questionType:String,
+        question: String,
+        answers:[
+            {
+            option: String,
+            correct:Boolean,
+        }
+    ]
+    }
+]
+});
+
+const finalExamModel = mongoose.model("finalExam",finalExamSchema);
+module.exports = finalExamModel;

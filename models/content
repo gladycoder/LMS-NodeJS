@@ -1,0 +1,19 @@
+const mongoose = require('mongoose');
+
+const contentSchema = new mongoose.Schema({
+    contentType:String,
+    source:String,
+    createdAt:{
+        type:Date,
+        default:()=>Date.now(),
+        immutable:true,
+    },
+    updatedAt:{
+        type:Date,
+        default: ()=>Date.now(),
+        immutable:true,
+    }
+})
+
+const contentModel = mongoose.model("Content",contentSchema);
+module.exports = contentModel; 

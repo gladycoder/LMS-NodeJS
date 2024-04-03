@@ -1,0 +1,31 @@
+const mongoose = require('mongoose');
+
+const learnerCourseSchema = new mongoose.Schema({
+    learnerID :{
+        type: mongoose.Schema.ObjectId,
+        ref:"studentRegister",
+    },
+    courseID:{
+        type: mongoose.Schema.ObjectId,
+        ref:"Course",
+    },
+    chapterIDS:[{
+        type:String,
+    }],
+    certificateUrl: String,
+    isShowCertificate:Boolean,
+    createdAt:{
+        type:Date,
+        default:()=>Date.now(),
+        immutable:true,
+    },
+    updatedAt:{
+        type:Date,
+        default:()=>Date.now(),
+    },
+})
+
+
+
+const learnerCourseModel = mongoose.model('LearnerCourse',learnerCourseSchema);
+module.exports = learnerCourseModel;

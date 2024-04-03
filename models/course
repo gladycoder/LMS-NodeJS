@@ -1,0 +1,45 @@
+const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid'); // Import the UUID library
+
+const courseSchema = new mongoose.Schema({
+    courseName :{
+        type:String,
+        required:true,
+    },
+    description:{
+        type:String,
+        required:true,
+    },
+    avatar:{
+        type:String,
+        required:true,
+    },
+    chapter:[
+        {
+            contentIds:[{
+                type: mongoose.Schema.ObjectId,
+                ref:"Content",
+                
+            }],
+            chapterTitle:String,
+            uniqueID: {
+                type: String,
+                default: uuidv4, // Use UUID library to generate unique ID
+            },
+        }
+    ],
+    createdAt:{
+        type:Date,
+        default:()=>Date.now(),
+        immutable:true,
+    },
+    updatedAt:{
+        type:Date,
+        default:()=>Date.now(),
+        immutable:true,
+    }
+});
+
+const courseModel = mongoose.model('Course',courseSchema);
+
+module.exports = courseModel;
