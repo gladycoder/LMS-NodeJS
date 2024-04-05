@@ -20,7 +20,9 @@ try{
 
     const userAvailable = await studentRegister.findOne({ email });
   if (userAvailable) {
-    res.status(400);
+    res.status(400).json({
+      message: "User already registered!"
+    });
     throw new Error("User already registered!");
   }
 
