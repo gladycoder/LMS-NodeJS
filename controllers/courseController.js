@@ -5,7 +5,7 @@ const DIR = "./uploads/";
 const createCourse = async (req, res) => {
   console.log(req.body);
   //Image check if have then include image into payload
-  var imgUrl = "";
+  // var imgUrl = "";
   // let payload;
  
   try {
@@ -39,9 +39,9 @@ const updateCourse = async (req, res) => {
     //Check user have photo/image. if had then first delete local file then database
     const courseInfo = await Course.find({_id: courseId});
     const coursePhotoInfo = courseInfo[0].courseImage;
-    console.log("courseInfo : ",courseInfo);
-    console.log("userphotInfo : ",coursePhotoInfo);
-    console.log("imgurl : ",imgUrl);
+    // console.log("courseInfo : ",courseInfo);
+    // console.log("userphotInfo : ",coursePhotoInfo);
+    // console.log("imgurl : ",imgUrl);
     // console.log("id : ",id);
     if(coursePhotoInfo){
       fs.unlinkSync( DIR + coursePhotoInfo);
