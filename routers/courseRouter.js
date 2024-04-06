@@ -5,8 +5,8 @@ const fileUpload = require('../middleware/fileupload');
 const courseController = require('../controllers/courseController');
 
 router.get("/allCourse",courseController.getAllCourses);
-router.post("/courseCreate",fileUpload,courseController.createCourse);
-router.put("/courseUpdate/:id",fileUpload,courseController.updateCourse);
+router.post("/courseCreate",courseController.createCourse);
+router.put("/courseUpdate/:id",courseController.updateCourse);
 router.delete("/courseDelete/:id",courseController.deleteCourse);
 
 router.get("/allChapters/:courseID",courseController.getAllChapters);

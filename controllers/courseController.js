@@ -9,13 +9,13 @@ const createCourse = async (req, res) => {
   // let payload;
  
   try {
-    if (req.file) var imgUrl = `${req.file.filename}`;
+    // if (req.file) var imgUrl = `${req.file.filename}`;
     // req.body.avatar = imgUrl;
     var newCourse = {
       courseName: req.body.courseName,
       description: req.body.description,
       courseImage:req.body.courseImage,
-      avatar:imgUrl,
+      // avatar:imgUrl,
     };
 
     const courseData = new Course(newCourse);
@@ -32,13 +32,13 @@ const updateCourse = async (req, res) => {
     const courseId = req.body._id;
     console.log(courseId);
     //If File have then push file into reqBody then process update
-    var imgUrl = '';
-    if(req.file) var imgUrl = `${req.file.filename}`;
+    // var imgUrl = '';
+    // if(req.file) var imgUrl = `${req.file.filename}`;
     // reqBody.avatar = imgUrl;
 
     //Check user have photo/image. if had then first delete local file then database
     const courseInfo = await Course.find({_id: courseId});
-    const coursePhotoInfo = courseInfo[0].avatar;
+    const coursePhotoInfo = courseInfo[0].courseImage;
     console.log("courseInfo : ",courseInfo);
     console.log("userphotInfo : ",coursePhotoInfo);
     console.log("imgurl : ",imgUrl);
@@ -52,7 +52,7 @@ const updateCourse = async (req, res) => {
       courseName: req.body.courseName,
       description: req.body.description,
       courseImage:req.body.courseImage,
-      avatar:imgUrl,
+      // avatar:imgUrl,
     };
 
     const course = await Course.findByIdAndUpdate(courseId, updateCourse, {
@@ -79,10 +79,10 @@ const deleteCourse = async (req, res) => {
       const id = req.params.id;
       console.log(id);
       const courseInfo = await Course.findByIdAndDelete({_id: id});
-        const {avatar} = courseInfo
+        const {courseImage} = courseInfo
         
-        if(avatar){
-          fs.unlinkSync(DIR + avatar);
+        if(courseImage){
+          fs.unlinkSync(DIR + courseImage);
         }
       await Course.findByIdAndDelete(id);
       res.status(201).json({ message: "donation deleted successfully" });
