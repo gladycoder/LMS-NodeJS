@@ -28,7 +28,7 @@ mongoose.connect(DBURL).then(()=>{
 })
 .catch(error => console.log(error));
 
-app.use('/courseImage',express.static('uploads'));
+app.use('/courseImage',express.static('uploads')); // image store folder
 
 app.use('/api/',studentRoute);
 app.use('/api/',courseRoute);
