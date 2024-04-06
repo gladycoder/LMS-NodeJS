@@ -11,6 +11,7 @@ const learnerCourseRoute = require('./routers/learnerCourseRouter');
 const finalExam = require('./routers/finalExamRouter');
 const photoRoute = require('./routers/photoRouter');
 const adminRoute = require('./routers/adminRouter');
+const commonImagesRoute = require('./routers/commonImagesRouter');
 
 const app = express();
 dotenv.config();
@@ -37,3 +38,4 @@ app.use('/api/',learnerCourseRoute);
 app.use('/api/',finalExam);
 app.use('/api/',adminRoute);
 app.use('/api/',photoRoute);
+app.use('/api/',commonImagesRoute);
