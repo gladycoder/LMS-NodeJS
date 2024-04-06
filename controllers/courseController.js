@@ -14,6 +14,7 @@ const createCourse = async (req, res) => {
     var newCourse = {
       courseName: req.body.courseName,
       description: req.body.description,
+      courseImage:req.body.courseImage,
       avatar:imgUrl,
     };
 
@@ -50,6 +51,7 @@ const updateCourse = async (req, res) => {
     var updateCourse = {
       courseName: req.body.courseName,
       description: req.body.description,
+      courseImage:req.body.courseImage,
       avatar:imgUrl,
     };
 
