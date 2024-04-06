@@ -37,15 +37,15 @@ const updateCourse = async (req, res) => {
     // reqBody.avatar = imgUrl;
 
     //Check user have photo/image. if had then first delete local file then database
-    const courseInfo = await Course.find({_id: courseId});
-    const coursePhotoInfo = courseInfo[0].courseImage;
+    // const courseInfo = await Course.find({_id: courseId});
+    // const coursePhotoInfo = courseInfo[0].courseImage;
     // console.log("courseInfo : ",courseInfo);
     // console.log("userphotInfo : ",coursePhotoInfo);
     // console.log("imgurl : ",imgUrl);
     // console.log("id : ",id);
-    if(coursePhotoInfo){
-      fs.unlinkSync( DIR + coursePhotoInfo);
-    }
+    // if(coursePhotoInfo){
+    //   fs.unlinkSync( DIR + coursePhotoInfo);
+    // }
 
 
     var updateCourse = {
@@ -78,12 +78,12 @@ const deleteCourse = async (req, res) => {
     try {
       const id = req.params.id;
       console.log(id);
-      const courseInfo = await Course.findByIdAndDelete({_id: id});
-        const {courseImage} = courseInfo
+      // const courseInfo = await Course.findByIdAndDelete({_id: id});
+      //   const {courseImage} = courseInfo
         
-        if(courseImage){
-          fs.unlinkSync(DIR + courseImage);
-        }
+      //   if(courseImage){
+      //     fs.unlinkSync(DIR + courseImage);
+      //   }
       await Course.findByIdAndDelete(id);
       res.status(201).json({ message: "donation deleted successfully" });
     } catch (error) {
